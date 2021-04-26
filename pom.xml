@@ -56,7 +56,10 @@
 		</dependency>
 
 		<!-- JSF -->
-		
+		<dependency>
+                           <groupId>junit</groupId>
+                           <artifactId>junit</artifactId>
+                </dependency>
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-impl</artifactId>
