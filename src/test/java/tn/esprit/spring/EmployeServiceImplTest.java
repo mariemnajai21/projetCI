@@ -1,5 +1,6 @@
 
-package tn.esprit.spring;
+
+package tn.esprit.spring.service;
 
 
 
@@ -33,31 +34,47 @@ public class EmployeServiceImplTest {
 	@Autowired 
 	IEmployeService us;
 	
-	
+	Integer idEm;
 	@Test
 	public void testAddEmploye()  {
 		
-		Employe em = new Employe("gaied", "med", "gaied@esprit.tn", "123456", Role.ADMINISTRATEUR); 
+		Employe em = new Employe("najai", "mariem", "mariem@esprit.tn", "123456", Role.ADMINISTRATEUR); 
 		Employe employeAdded = us.addEmploye(em); 
-		assertEquals(em.getPrenom(),employeAdded.getNom());
+		assertEquals(em.getNom(),employeAdded.getNom());
 	}
 	
 	@Test
 	public void testRetrieveAllEmployes() {
 		List<Employe> listEmployes = us.retrieveAllEmployes(); 
 		 
-		assertEquals(4, listEmployes.size());
+		assertEquals(1, listEmployes.size());
 	}
 
 	@Test
 	public void testModifyUser() throws ParseException   {
 		
-		Employe u = new Employe("gaied", "mohamed","test@esprit.tn","12345", Role.INGENIEUR); 
+		Employe u = new Employe("najai", "mariem", "mariem@esprit.tn","12345", Role.INGENIEUR); 
 		Employe userUpdated  = us.updateEmploye(u); 
-		assertEquals(u.getNom(), userUpdated.getPrenom());
+		assertEquals(u.getPrenom(), userUpdated.getPrenom());
 	}
-		
 	
+	@Test
+	public void testGetEmployeById() {
+		Employe e =us.getEmployeeById(7);
+		assertEquals(7, e.getId());
+	}
+	
+	@Test
+	public void testDeleteEmployeById()
+	{
+		if(idEm!=null){
+		int i = us.deleteEmployeById(idEm);
+		
+		assertEquals(0, i);}
+		else {
+			int i = us.deleteEmployeById(7);
+			
+			assertEquals(0, i);}
+	}
+//mariem	
 }
-    
-
